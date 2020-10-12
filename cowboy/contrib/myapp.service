@@ -1,0 +1,18 @@
+[Unit]
+Description={{desc}}
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+ExecStart=/usr/bin/erl -config config/sys.config -noinput -sname {{name}}@localhost -kernel inet_dist_use_interface '{127,0,0,1}' -s {{name}}_app
+Environment="ERL_LIBS=_build/default/lib" "HOME=/var/lib/{{name}}"
+WorkingDirectory=/var/lib/{{name}}
+User={{name}}
+DynamicUser=yes
+StateDirectory={{name}}
+Restart=always
+RestartSec=12
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+
+[Install]
+WantedBy=default.target

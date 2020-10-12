@@ -1,0 +1,22 @@
+{description, "Cowboy HTTP Server Template"}.
+{variables,
+ [{name, "myapp", "Name of the app to generate"},
+  {desc, "A Cowboy HTTP Server", "Short description of the app"}]}.
+
+{template, "cowboy/.gitignore",                           "{{name}}/.gitignore"}.
+{template, "cowboy/README.md",                            "{{name}}/README.md"}.
+{template, "cowboy/rebar.config",                         "{{name}}/rebar.config"}.
+{dir,                                                     "{{name}}/config"}.
+{template, "cowboy/config/sys.config",                    "{{name}}/config/sys.config"}.
+{dir,                                                     "{{name}}/contrib"}.
+{template, "cowboy/contrib/myapp.service",                "{{name}}/contrib/{{name}}.service"}.
+{dir,                                                     "{{name}}/{{apps_dir}}"}.
+{dir,                                                     "{{name}}/{{apps_dir}}/{{name}}"}.
+{dir,                                                     "{{name}}/{{apps_dir}}/{{name}}/priv"}.
+{template, "cowboy/apps/myapp/priv/default_index.html",   "{{name}}/{{apps_dir}}/{{name}}/priv/default_index.html"}.
+{dir,                                                     "{{name}}/{{apps_dir}}/{{name}}/src"}.
+{template, "cowboy/apps/myapp/src/myapp_api_handler.erl", "{{name}}/{{apps_dir}}/{{name}}/src/{{name}}_api_handler.erl"}.
+{template, "cowboy/apps/myapp/src/myapp_app.erl",         "{{name}}/{{apps_dir}}/{{name}}/src/{{name}}_app.erl"}.
+{template, "cowboy/apps/myapp/src/myapp.app.src",         "{{name}}/{{apps_dir}}/{{name}}/src/{{name}}.app.src"}.
+{template, "cowboy/apps/myapp/src/myapp_server.erl",      "{{name}}/{{apps_dir}}/{{name}}/src/{{name}}_server.erl"}.
+{template, "cowboy/apps/myapp/src/myapp_sup.erl",         "{{name}}/{{apps_dir}}/{{name}}/src/{{name}}_sup.erl"}.
