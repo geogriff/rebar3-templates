@@ -9,6 +9,7 @@
 %% public API
 %%
 
+-spec start() -> {ok, pid()} | {error, any()}.
 start() ->
     ?LOG_INFO(?MODULE_STRING " starting on ~p", [node()]),
 
@@ -37,6 +38,7 @@ start() ->
 
     cowboy:start_clear(?MODULE, TransportOpts, ProtocolOpts).
 
+-spec stop() -> ok | {error, any()}.
 stop() ->
     ?LOG_INFO(?MODULE_STRING " stopping on ~p", [node()]),
     ranch:stop_listener(?MODULE).

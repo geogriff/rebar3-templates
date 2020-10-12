@@ -1,5 +1,4 @@
 -module({{name}}_sup).
-
 -behaviour(supervisor).
 
 %% API
@@ -14,6 +13,7 @@
 %% API
 %%
 
+-spec start_link() -> {ok, pid()} | ignore | {error, any()}.
 start_link() ->
     supervisor:start_link({local, ?SERVER}, ?MODULE, []).
 
@@ -21,6 +21,7 @@ start_link() ->
 %% supervisor callbacks
 %%
 
+-spec init(Args :: any()) -> {ok, {supervisor:sup_flags(), [supervisor:child_spec()]}} | ignore.
 init([]) ->
     Mods = [],
     ChildSpecs = [Mod:child_spec() || Mod <- Mods],
